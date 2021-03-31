@@ -9,12 +9,14 @@ var platform1,platform2;
 var polygon;
 var slingShot;
 var polygonImg;
+var backgroundImg;
 
 var score=0;
 
+
 function preload(){
     polygonImg=loadImage("polygon.png");
-    
+    getbackgroundImg();
   }
 
 function setup() {
@@ -67,13 +69,32 @@ slingShot = new Slingshot(this.polygon,{x:100,y:200});
 
 }
 function draw() {
-  background("white");
+  if(backgroundImg)
+  background(backgroundImg);
 
   text("SCORE: "+score,750,40)
 
   ground.display();
   platform1.display();
   platform2.display();
+
+  box1.display();
+  box2.display();
+  box3.display();
+  box4.display();
+  box5.display();
+  box6.display();
+  box7.display();
+  box8.display();
+  box9.display();
+  box10.display();
+  box11.display();
+  box12.display();
+  box13.display();
+  box14.display();
+  box15.display();
+  box16.display();
+
   box1.score();
   box2.score();
   box3.score();
@@ -90,6 +111,16 @@ function draw() {
   box14.score();
   box15.score();
   box16.score();
+
+  boxA.display();
+  boxB.display();
+  boxC.display();
+  boxD.display();
+  boxE.display();
+  boxF.display();
+  boxG.display();
+  boxH.display();
+  boxI.display();
   
   boxA.score();
   boxB.score();
@@ -117,18 +148,12 @@ function keyPressed(){
     slingShot.attach(this.polygon);
   }
 }
-async function getTime(){
-var time= await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-var timeJSON=await time.json()
-var datetime = timeJSON.datetime;
+async function getbackgroundImg(){
+var response= await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+var responseJSON=await response.json()
+var datetime = responseJSON.datetime;
 var hour = datetime.slice(11,13);
 
-if(hour>=11 && hour<=18){
-background("yellow");
-}
-else{
- background("black");   
-}
 
 
 }
