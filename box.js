@@ -13,11 +13,8 @@ class Box {
       World.add(world, this.body);
     }
    
-    
-    
-  
-
       display(){
+        
         if(this.body.speed <3){
         var angle = this.body.angle;
         var pos= this.body.position;

@@ -10,13 +10,18 @@ var polygon;
 var slingShot;
 var polygonImg;
 var backgroundImg;
+var bg,bg2;
 
 var score=0;
 
 
 function preload(){
+  getbackgroundImg();
     polygonImg=loadImage("polygon.png");
-    getbackgroundImg();
+    bg=loadImage("sunlight.png");
+    bg2=loadImage("black.png");
+   
+  
   }
 
 function setup() {
@@ -24,7 +29,6 @@ createCanvas(900,400);
 
 engine=Engine.create()
 world=engine.world;
-Engine.run(engine);
 
 ground=new Ground(450,390,900,20);
 platform1=new Platform(390,300,250,10);
@@ -72,8 +76,14 @@ function draw() {
   if(backgroundImg)
   background(backgroundImg);
 
-  text("SCORE: "+score,750,40)
+  Engine.update(engine); 
 
+  textSize(20);
+  fill(255)
+  text("SCORE: "+score,750,40)
+  
+
+  
   ground.display();
   platform1.display();
   platform2.display();
@@ -153,6 +163,17 @@ var response= await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
 var responseJSON=await response.json()
 var datetime = responseJSON.datetime;
 var hour = datetime.slice(11,13);
+
+if(hour>=11 && hour<=19){
+  bg="sunlight.png";
+  
+}
+else{
+  bg="black.png";
+}
+
+backgroundImg=loadImage(bg);
+
 
 
 

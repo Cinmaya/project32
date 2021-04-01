@@ -5,7 +5,7 @@ class Slingshot{
         var options = {
             bodyA: bodyA,
             pointB: pointB,
-            stiffness: 0.02,
+            stiffness: 0.07,
             length: 1
         }
         this.sling = Constraint.create(options);
